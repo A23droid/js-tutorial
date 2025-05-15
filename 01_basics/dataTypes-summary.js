@@ -35,3 +35,6 @@ const myFunction = function(){ // type => object function
 console.log(typeof hola); // undefined
 console.log(typeof myFunction); // function
 
+// ++++++++++++++++++++++++++ Memory ++++++++++++++++++++++++++
+
+// Stack (Primitive), Heap (Non-Primitive)
