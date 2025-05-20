@@ -1,5 +1,5 @@
 const name = "aditya"
-const repoCount = 6;
+let repoCount = 6;
 
 // console.log(name + " has " + repoCount + " repositories.") // Outdated syntax
 
