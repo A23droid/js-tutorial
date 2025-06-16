@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello, nodes!</title>
+</head>
+<body style = "background-color: rgb(79, 76, 76); color: aliceblue;">
+    
+</body>
+
+<script>
+    const div = document.createElement('div')
+    console.log(div);
+    div.className = "main"
+    div.id = Math.round(Math.random() * 10 + 1)
+    div.setAttribute("name", "AP") // Custom (attr, val) pair
+    div.style.backgroundColor = 'orange'
+    div.style.padding = '12px'
+    // div.innerText = "Hello I am a div :)" // Method 1
+    // Method 2 --->
+    const addText = document.createTextNode("Hey I am a div ;)")
+    div.appendChild(addText)
+    // <---
+
+    document.body.appendChild(div);
+
+    // HW:
+    // Q1. Make a function "createDiv" which takes text, bgColor, and color as args and creates
+    // a div based on that. :)
+    //
+    // Q2. Using iterations, make three arr (textArr, bgColorArr, colorArr) and 
+    // enter them in the function "createDiv", ;)
+
+    const createDiv = (text, bgColor, color, padding) => {
+        const aDiv = document.createElement('div')
+        aDiv.style.backgroundColor = `${bgColor}`
+        aDiv.style.color = `${color}`
+        aDiv.style.padding = `${padding}`
+
+        const textToBeAdded = document.createTextNode(`${text}`)
+        aDiv.appendChild(textToBeAdded)
+
+        document.body.appendChild(aDiv)
+    }
+
+    // createDiv("Test Text", 'beige', 'black', '10px')
+    // createDiv('Another Test', 'blue', 'skyblue', '5px')
+
+    const textArr = ["I", "can", "be","good", "in", "JS"]
+    const bgColorArr = ['red', 'purple', 'blue', 'white', 'green', 'beige']
+    const colorArr = ['ivory', 'lightgray', 'AliceBlue', 'darkslategray', 'mintcream', 'black']
+
+    for (let i = 0; i < textArr.length; i++) {
+        createDiv(textArr[i], bgColorArr[i], colorArr[i], '12px')
+    }
+</script>
+</html>
