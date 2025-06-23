@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola</title>
+</head>
+<body style="background-color: cadetblue; color: azure;">
+    <h1>Lessgooo!</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayAditya = function() {
+        console.log("Aditya"); 
+        
+    }
+
+    const changeText = function() {
+    document.querySelector('h1').innerHTML = 'We gonna learn JS :)';
+    }
+
+    // This executes (only one time) after the given time
+    setTimeout(sayAditya, 2000) // function(reference, not execute), time (in ms) 
+    const changeMe = setTimeout(changeText, 2000);
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe) // stops the setTimeout and needs the reference of the setTimeout
+                    // to be stopped
+    })
+</script>
+</html>

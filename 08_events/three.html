@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Async</title>
+</head>
+<body style="background-color: #212121; color: azure;">
+    <h1>Lessgooo! We are back!</h1>
+    <button id="start">Start</button>
+
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    const sayDate = function(str){
+        console.log(str, Date.now());
+        
+    }
+
+    let intervalID;
+    document.querySelector('#start').addEventListener('click', function() {
+        console.log("STARTED");
+    intervalID = setInterval(sayDate, 1000, "Aditya"); // function (reference), time (in ms), func parameter
+    
+    
+    }) 
+    
+    document.querySelector('#stop').addEventListener('click', function() {
+        console.log("STOPPED");
+
+        clearInterval(intervalID)
+
+    }) 
+</script>
+</html>
