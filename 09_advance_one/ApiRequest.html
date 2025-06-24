@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<style>
+    .card {
+      width: 300px;
+      border: 2px solid #222;
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+      background-color: #fff;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card-body h2 {
+      margin-top: 0;
+      font-size: 1.4em;
+    }
+
+    .card-body p {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .card-body button {
+      margin-top: 12px;
+      padding: 8px 16px;
+      background-color: #0066ff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .card-body button:hover {
+      background-color: #004ecc;
+    }
+  </style>
+<body style = "background-color: darkslategray; color: antiquewhite;">
+<div class="card">
+    <div class="card-body">
+      <h2 style="color: #555;">Assignment</h2>
+      <p id="photo">This card lives and breathes in a single HTML file. Clean, responsive, and simple.</p>
+      <p id="followers">This card lives and breathes in a single HTML file. Clean, responsive, and simple.</p>
+      
+      <button id = "click">Visit Github</button>
+    </div>
+  </div>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+    const xhr = new XMLHttpRequest(); // const obj = new <class>;
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function() {
+        
+    console.log(xhr.readyState);
+    if (xhr.readyState === 4) {
+        // const data = this.responseText;
+        // console.log(data.followers); // undefined as response is STR, not OBJ
+
+        const data = JSON.parse(this.responseText); // converts STR to OBJ
+        console.log(typeof data);
+        console.log(data.followers); 
+        const followers = document.querySelector('#followers');
+        followers.innerHTML = `Followers: ${data.followers}`;
+        const photo = document.querySelector('#photo');
+        photo.outerHTML = `<img src = ${data.avatar_url}>`
+    }   
+
+        
+    }
+    
+    
+    xhr.send();
+
+    document.querySelector('#click').addEventListener('click', () => {
+        window.location.href = 'https://github.com/hiteshchoudhary';
+    })
+</script>
+</html>
