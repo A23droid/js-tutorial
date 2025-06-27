@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun with Closure</title>
+</head>
+<body style="background-color: darkslategray; color: azure;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+    // function init() {
+    // let name = "Mozilla"; 
+    // function displayName() {
+    //     console.log(name); 
+    // }
+    // displayName();
+    // }
+    // init();
+
+    // function outer() {
+    //     let username = "aditya";
+    //     function inner() {
+    //         console.log(username);
+            
+    //     }
+    //     inner()
+    // } 
+    // // console.log(username);
+    // outer();
+
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName; // not just ref, but ref w/ lexical scope
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+</script>
+
+<script>
+    // Use case of 'Closure'
+
+    // document.getElementById('orange').addEventListener('click', () =>{
+    //     document.body.style.backgroundColor = 'orange';
+    // })
+
+    // document.getElementById('orange').onclick = () => {
+    //     document.body.style.backgroundColor = 'orange'; 
+    // }
+    // document.getElementById('green').onclick = () => {
+    //     document.body.style.backgroundColor = 'green'; 
+    // }
+
+    function clickHandler(color) {
+        // document.body.style.backgroundColor = `${color}`;
+        return function() {
+            document.body.style.backgroundColor = `${color}`;
+        } 
+    }
+
+    document.getElementById('green').onclick = clickHandler("green");
+    document.getElementById('orange').onclick = clickHandler("orange");
+
+</script>
+</html>
